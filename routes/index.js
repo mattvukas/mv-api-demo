@@ -3,11 +3,11 @@ const express = require('express');
 const cheerio = require('cheerio');
 
 const router = express.Router();
+const baseProductsUrl = "https://looplist-product-sample.herokuapp.com/products/";
 
 // coding challenge
 router.get('/api/products/:id', function(req, res, next) {
-  const baseUrl = "https://looplist-product-sample.herokuapp.com/products/";
-  request(baseUrl + req.params.id, function (error, response, body) {
+  request(baseProductsUrl + req.params.id, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       const $ = cheerio.load(body);
       res.send({
